@@ -72,9 +72,7 @@ class SchoolGPAController {
             const index = this.grades.findIndex((grade) => grade.id === gradeId);
             if (index !== -1) {
                 this.grades.splice(index, 1);
-                if (this.selectedGrade.id === gradeId) {
-                    this.selectedGrade = this.grades[0];
-                }
+                this.selectedGrade.id === gradeId && this.selectGrade(this.grades[0]);
             }
         });
 
