@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ITREX task</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Normally I would configure standard builder and would put a couple of concatenated files -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/lib/angular-ui-grid/ui-grid.min.css">
+    <link rel="stylesheet" href="app/app.css">
+    <link rel="stylesheet" href="app/pages/dominoSandbox/domino-sandbox.css">
+</head>
+<body ng-app="itRex" class="bg-light">
+    <div class="container">
+        <nav-header></nav-header>
+
+        <ui-view></ui-view>
+    </div>
+
+    <!-- Normally I would configure standard builder and would put a couple of concatenated files -->
+    <script src="assets/lib/angular/angular.js"></script>
+    <script src="assets/lib/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="assets/lib/angular-ui-grid/ui-grid.min.js"></script>
+    <script src="assets/lib/angular-ui-grid/ui-grid.core.min.js"></script>
+    <script src="assets/lib/angular-ui-grid/ui-grid.auto-resize.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/shared/navHeader/nav-header.component.js"></script>
+    <script src="app/pages/dominoSandbox/domino-sandbox.app.js"></script>
+    <script src="app/pages/dominoSandbox/domino-sandbox.component.js"></script>
+    <script src="app/pages/dominoSandbox/dominoPart/domino-part.component.js"></script>
+    <script src="app/pages/dominoSandbox/domino/domino.component.js"></script>
+    <script src="app/pages/schoolGPA/school-gpa.app.js"></script>
+    <script src="app/pages/schoolGPA/school-gpa.component.js"></script>
+    <script src="app/pages/schoolGPA/services/school-gpa.service.js"></script>
+    <script src="app/pages/schoolGPA/services/grade.service.js"></script>
+    <script src="app/pages/schoolGPA/services/student.service.js"></script>
+</body>
+</html>

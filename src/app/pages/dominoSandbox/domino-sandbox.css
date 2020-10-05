@@ -1,0 +1,140 @@
+domino {
+    display: inline-block;
+}
+domino-part {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+}
+domino domino-part {
+    width: 100%;
+    height: 50%;
+    border: 2px solid #000;
+}
+domino domino-part:nth-child(1) {
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    border-bottom-width: 1px;
+}
+
+domino domino-part:nth-child(2) {
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    border-top-width: 1px;
+}
+domino-part .domino-part-dot {
+    display: none;
+    position: absolute;
+    width: 13%;
+    height: 13%;
+    border-radius: 50%;
+    background: #000;
+}
+
+domino-part.domino-part-type-1 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-2 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-2 .domino-part-dot:nth-child(2),
+domino-part.domino-part-type-3 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-3 .domino-part-dot:nth-child(2),
+domino-part.domino-part-type-3 .domino-part-dot:nth-child(3),
+domino-part.domino-part-type-4 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-4 .domino-part-dot:nth-child(2),
+domino-part.domino-part-type-4 .domino-part-dot:nth-child(3),
+domino-part.domino-part-type-4 .domino-part-dot:nth-child(4),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(2),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(3),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(4),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(5),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(2),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(3),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(4),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(5),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(6) {
+    display: block;
+}
+
+domino-part.domino-part-type-1 .domino-part-dot{
+    width: 19%;
+    height: 19%;
+}
+domino-part.domino-part-type-2 .domino-part-dot {
+    width: 16%;
+    height: 16%;
+}
+
+/* DOMINO PARTS TOP LEFT DOTS */
+domino-part.domino-part-type-4 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(1) {
+    top: 20%;
+    left: 20%;
+}
+
+/* DOMINO PARTS TOP RIGHT DOTS */
+domino-part.domino-part-type-2 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-3 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-4 .domino-part-dot:nth-child(2),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(2),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(2) {
+    top: 20%;
+    right: 20%;
+}
+
+/* DOMINO PARTS BOTTOM LEFT DOTS */
+domino-part.domino-part-type-2 .domino-part-dot:nth-child(2),
+domino-part.domino-part-type-3 .domino-part-dot:nth-child(3),
+domino-part.domino-part-type-4 .domino-part-dot:nth-child(3),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(4),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(5) {
+    bottom: 20%;
+    left: 20%;
+}
+
+/* DOMINO PARTS BOTTOM RIGHT DOTS */
+domino-part.domino-part-type-4 .domino-part-dot:nth-child(4),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(5),
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(6) {
+    right: 20%;
+    bottom: 20%;
+}
+
+/* DOMINO PARTS CENTER DOTS */
+domino-part.domino-part-type-1 .domino-part-dot:nth-child(1),
+domino-part.domino-part-type-3 .domino-part-dot:nth-child(2),
+domino-part.domino-part-type-5 .domino-part-dot:nth-child(3) {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(3) {
+    top: 50%;
+    left: 20%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+domino-part.domino-part-type-6 .domino-part-dot:nth-child(4) {
+    top: 50%;
+    right: 20%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+domino-sandbox domino {
+    transition-property: transform;
+}
+domino-sandbox domino.highlight-first-part domino-part:nth-child(1),
+domino-sandbox domino.highlight-second-part domino-part:nth-child(2) {
+    box-shadow: 0 0 0 0.2rem rgba(130,138,145,.5);
+}
+domino-sandbox .domino-parts-selection domino-part:hover {
+    box-shadow: 0 0 0 0.2rem rgba(130,138,145,.5);
+}

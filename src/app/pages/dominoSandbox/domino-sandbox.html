@@ -1,0 +1,54 @@
+<div class="card p-4 mt-4">
+    <h2 class="card-title">Domino Sandbox</h2>
+
+    <form name="dominoSandboxForm" class="row mt-4">
+        <div class="col-8">
+            <!-- ===== SANDBOX CONTROLS ===== -->
+            <div class="text-center">
+                <button type="button" class="btn btn-outline-secondary" ng-click="$ctrl.rotateDomino(true)">&lt;</button>
+                <button type="button" class="btn btn-secondary mr-4 ml-4" ng-click="$ctrl.resetDominoState()">Reset</button>
+                <button type="button" class="btn btn-outline-secondary" ng-click="$ctrl.rotateDomino()">&gt;</button>
+            </div>
+            <!-- ===== SANDBOX CONTROLS END ===== -->
+
+            <!-- ===== DOMINO ===== -->
+            <div class="text-center mt-4">
+                <domino state="$ctrl.dominoState" ng-style="$ctrl.dominoStyles" ng-class="{
+                    'highlight-first-part': !$ctrl.dominoState.firstPartType,
+                    'highlight-second-part': $ctrl.dominoState.firstPartType && !$ctrl.dominoState.secondPartType
+                }"></domino>
+            </div>
+            <!-- ===== DOMINO END ===== -->
+
+            <!-- ===== SANDBOX SETTINGS ===== -->
+            <div class="form-group row justify-content-center">
+                <label for="size" class="col-2 col-form-label">Size:</label>
+                <div class="col-6">
+                    <input id="size" type="range" class="form-control" ng-model="$ctrl.sandboxConfig.size"
+                           ng-change="$ctrl.setDominoSizeStyles()" min="10" max="15">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center mt-4">
+                <label for="rotateSpeed" class="col-2 col-form-label">Speed:</label>
+                <div class="col-6">
+                    <input id="rotateSpeed" type="range" class="form-control" ng-model="$ctrl.sandboxConfig.rotateSpeed"
+                           ng-change="$ctrl.setDominoTransitionStyles()" min="0" max="9">
+                </div>
+            </div>
+            <!-- ===== SANDBOX SETTINGS END ===== -->
+        </div>
+
+        <!-- ===== DOMINO PARTS SELECTION ===== -->
+        <div class="col-4 domino-parts-selection">
+            <domino-part class="domino-part-type-1 mb-1" ng-click="$ctrl.setDominoPartType(1)" role="button"></domino-part>
+            <domino-part class="domino-part-type-2 mb-1" ng-click="$ctrl.setDominoPartType(2)" role="button"></domino-part>
+            <domino-part class="domino-part-type-3 mb-1" ng-click="$ctrl.setDominoPartType(3)" role="button"></domino-part>
+            <domino-part class="domino-part-type-4 mb-1" ng-click="$ctrl.setDominoPartType(4)" role="button"></domino-part>
+            <domino-part class="domino-part-type-5 mb-1" ng-click="$ctrl.setDominoPartType(5)" role="button"></domino-part>
+            <domino-part class="domino-part-type-6 mb-1" ng-click="$ctrl.setDominoPartType(6)" role="button"></domino-part>
+        </div>
+        <!-- ===== DOMINO PARTS SELECTION END ===== -->
+    </form>
+</div>
+
+

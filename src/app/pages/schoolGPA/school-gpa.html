@@ -1,0 +1,56 @@
+<div class="container card p-4 mt-4">
+    <h2 class="card-title">School GPA Calculator</h2>
+
+    <!-- ===== AVERAGE GPA ===== -->
+    <p class="h5 text-right">
+        <span ng-bind="'Average GPA: '"></span>
+        <span ng-bind="$ctrl.SchoolGPAService.schoolGPA"></span>
+    </p>
+    <!-- ===== AVERAGE GPA END ===== -->
+
+    <!-- ===== GRADES TABS CONTROLS ===== -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item" ng-repeat="grade in $ctrl.grades">
+            <div class="nav-link" role="button" ng-class="{'active': $ctrl.selectedGrade === grade}"
+                 ng-click="$ctrl.selectGrade(grade)">
+                <span class="align-middle" ng-bind="'Grade ' + grade.name"></span>
+                <button type="button" class="close nav-tab-close-btn align-middle" aria-label="Close"
+                        ng-click="$ctrl.deleteGrade(grade.id)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </li>
+        <li class="nav-item">
+            <button class="btn btn-secondary btn-sm mt-2 mr-2 ml-2" ng-click="$ctrl.addGrade()">+</button>
+        </li>
+    </ul>
+    <!-- ===== GRADES TABS CONTROLS END ===== -->
+
+    <!-- ===== SELECTED GRADE (GRADE NAME AND STUDENTS TABLE) ===== -->
+    <div class="mt-3" ng-if="$ctrl.selectedGrade">
+        <form name="selectedGradeForm" class="form-inline">
+            <label for="gradeName" class="col-form-label mr-1">Grade:</label>
+            <input id="gradeName" class="form-control" ng-model="$ctrl.selectedGrade.name" maxlength="30" required>
+        </form>
+
+        <div ui-grid="$ctrl.studentsGridOptions" class="ui-grid-borderless-columns mt-3" ui-grid-infinite-scroll></div>
+
+        <form name="addStudentForm" class="mt-3 row">
+            <div class="col-8 form-inline">
+                <label for="newStudentName" class="col-form-label mr-2">Name:</label>
+                <input id="newStudentName" class="form-control mr-3" ng-model="$ctrl.newStudent.name" maxlength="50" required>
+
+                <label for="newStudentGPA" class="col-form-label mr-2">GPA:</label>
+                <input id="newStudentGPA" class="form-control mr-2" type="number" ng-model="$ctrl.newStudent.gpa"
+                       min="0" max="10" required>
+            </div>
+
+            <div class="col-4 text-right">
+                <button class="btn btn-secondary" ng-click="$ctrl.addStudent()">Add Student</button>
+            </div>
+        </form>
+    </div>
+    <!-- ===== SELECTED GRADE (GRADE NAME AND STUDENTS TABLE) END ===== -->
+</div>
+
+

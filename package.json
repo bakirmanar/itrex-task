@@ -1,0 +1,25 @@
+{
+  "name": "itrex-task",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Task for ITRex interview",
+  "license": "MIT",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.7",
+    "angular": "^1.7.5",
+    "angular-ui-grid": "^4.9.0",
+    "bootstrap": "^4.5.2"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "http-server": "^0.11.1"
+  },
+  "scripts": {
+    "postinstall": "npm run copy-libs",
+    "update-deps": "npm update",
+    "postupdate-deps": "npm run copy-libs",
+    "copy-libs": "cpx \"node_modules/{angular,angular-*,html5-boilerplate/dist,bootstrap/dist/,@uirouter/angularjs/release}/**/*\" src/assets/lib -C",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1 src"
+  }
+}

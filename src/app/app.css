@@ -1,0 +1,14 @@
+.navbar .nav-item .nav-link.active {
+  font-weight: 700;
+}
+
+.nav-tabs .nav-tab-close-btn {
+  float: none;
+  font-size: 1.4rem;
+}
+
+.ui-grid.ui-grid-borderless-columns .ui-grid-header-cell,
+.ui-grid.ui-grid-borderless-columns .ui-grid-cell {
+  /* because there is potential cell size calculation in ui-grid core, so don't want to remove border completely */
+  border-right-color: transparent;
+}
