@@ -6,11 +6,11 @@
 class GradeService {
     grades;
 
-    static get $inject() { return ['$http', '$q']; }
-    constructor ($http, $q) {
+    static get $inject() { return ['$http', '$q', 'StudentService']; }
+    constructor ($http, $q, StudentService) {
         this.$http = $http;
         this.$q = $q;
-
+        this.StudentService = StudentService;
     }
 
     getCachedGrades = () => {
@@ -80,6 +80,7 @@ class GradeService {
                 deferred.reject('Not found');
             } else {
                 this.grades.splice(index, 1);
+                this.StudentService.deleteByGradeId(id);
                 deferred.resolve();
             }
         });

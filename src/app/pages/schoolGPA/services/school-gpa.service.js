@@ -4,29 +4,24 @@
  * CRUD student API call
  */
 class SchoolGPAService {
-    schoolGPA = 0;
+    averageGPA = 0;
 
-    static get $inject() { return ['$http']; }
-    constructor ($http) {
-        $http.get('app/pages/schoolGPA/stabs/students.json').then((studentsResponse) => {
-            if (Array.isArray(studentsResponse.data)) {
-                let gpaSum = 0;
-                studentsResponse.data.forEach((student) => {
-                    gpaSum = this.roundTo2DecimalPlaces(gpaSum + (student.gpa || 0));
-                });
-                this.schoolGPA = this.roundTo2DecimalPlaces(gpaSum / studentsResponse.data.length);
-            }
-        })
+    recalculateAverageGPAByStudentsArray = (students) => {
+        let gpaSum = 0;
+        students.forEach((student) => {
+            gpaSum = this.roundTo2DecimalPlaces(gpaSum + (student.gpa || 0));
+        });
+        this.averageGPA = gpaSum && students.length ? this.roundTo2DecimalPlaces(gpaSum / students.length) : 0;
     }
 
     onStudentAdded = (addedStudentGPA, newStudentsLength) => {
-        const oldSum = this.roundTo2DecimalPlaces(this.schoolGPA * (newStudentsLength - 1));
-        this.schoolGPA = this.roundTo2DecimalPlaces((oldSum + addedStudentGPA) / newStudentsLength);
+        const oldSum = this.roundTo2DecimalPlaces(this.averageGPA * (newStudentsLength - 1));
+        this.averageGPA = this.roundTo2DecimalPlaces((oldSum + addedStudentGPA) / newStudentsLength);
     }
 
     onStudentRemoved = (removedStudentGPA, newStudentsLength) => {
-        const oldSum = this.roundTo2DecimalPlaces(this.schoolGPA * (newStudentsLength + 1));
-        this.schoolGPA = this.roundTo2DecimalPlaces((oldSum - removedStudentGPA) / newStudentsLength);
+        const oldSum = this.roundTo2DecimalPlaces(this.averageGPA * (newStudentsLength + 1));
+        this.averageGPA = this.roundTo2DecimalPlaces((oldSum - removedStudentGPA) / newStudentsLength);
     }
 
     // Usually I would place this method in some util service

@@ -21,6 +21,7 @@ class StudentService {
         } else {
             this.$http.get('app/pages/schoolGPA/stabs/students.json').then((studentsResponse) => {
                 this.students = studentsResponse.data || [];
+                this.SchoolGPAService.recalculateAverageGPAByStudentsArray(this.students);
                 deferred.resolve(this.students);
             }, (error) => deferred.reject(error));
         }
@@ -68,6 +69,11 @@ class StudentService {
         });
 
         return deferred.promise;
+    }
+
+    deleteByGradeId = (gradeId) => {
+        this.students = this.students.filter((student) => student.gradeId !== gradeId);
+        this.SchoolGPAService.recalculateAverageGPAByStudentsArray(this.students);
     }
 }
 
